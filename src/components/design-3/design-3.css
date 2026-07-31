@@ -1,0 +1,204 @@
+/* Design 3: editorial system remapped to BusinessBar calm light blue */
+
+.d3 {
+  --d3-bg: #eaf3f9;
+  --d3-surface: #dceaf4;
+  --d3-card: #f7fbfe;
+  --d3-ink: #0f2433;
+  --d3-muted: rgba(15, 36, 51, 0.62);
+  --d3-accent: #3d8fbf;
+  --d3-accent-deep: #2b6f96;
+  --d3-border: rgba(15, 36, 51, 0.1);
+  --d3-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 100%;
+  background: var(--d3-bg);
+  color: var(--d3-ink);
+  font-family: var(--font-instrument-sans), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+.d3 * {
+  box-sizing: border-box;
+}
+
+.d3-noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+.d3-serif {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.d3-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--d3-muted);
+}
+
+.d3-serrated {
+  display: block;
+  width: 100%;
+  height: 16px;
+  background: var(--d3-surface);
+  -webkit-mask-image: radial-gradient(circle at 10px 0, transparent 0, transparent 5px, black 5.5px);
+  mask-image: radial-gradient(circle at 10px 0, transparent 0, transparent 5px, black 5.5px);
+  -webkit-mask-size: 20px 10px;
+  mask-size: 20px 10px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-position: top;
+  mask-position: top;
+}
+
+.d3-serrated--flip {
+  background: var(--d3-bg);
+  transform: rotate(180deg);
+}
+
+.d3-grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 36, 51, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 36, 51, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.d3-nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  transition: background 300ms var(--d3-ease);
+}
+
+.d3-nav__pill a {
+  transition:
+    background 300ms var(--d3-ease),
+    color 300ms var(--d3-ease);
+}
+
+.d3-nav__pill a:hover,
+.d3-nav__pill a.is-active {
+  background: var(--d3-ink);
+  color: var(--d3-bg);
+}
+
+.d3-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--d3-accent);
+  color: #f7fbfe;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition:
+    transform 300ms var(--d3-ease),
+    background 300ms var(--d3-ease);
+}
+
+.d3-cta:hover {
+  background: var(--d3-accent-deep);
+  transform: scale(1.02);
+}
+
+.d3-arch {
+  border-radius: 10rem 10rem 24px 24px;
+}
+
+.d3-sticky-note {
+  background: var(--d3-accent);
+  color: #0f2433;
+  border-radius: 24px;
+  padding: 1.5rem;
+  transform: rotate(6deg);
+  transition: transform 300ms var(--d3-ease);
+  box-shadow: 0 18px 40px -24px rgba(15, 36, 51, 0.45);
+}
+
+.d3-sticky-note:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.d3-sticky-note--cta {
+  transform: rotate(2deg);
+  padding: 2.5rem;
+}
+
+.d3-sticky-note--cta:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.d3-tab {
+  transform: rotate(-1.5deg);
+  transition:
+    transform 300ms var(--d3-ease),
+    background 300ms var(--d3-ease),
+    color 300ms var(--d3-ease);
+}
+
+.d3-tab:nth-child(2) {
+  transform: rotate(-2deg);
+}
+
+.d3-tab:nth-child(3) {
+  transform: rotate(-1deg);
+}
+
+.d3-tab.is-active {
+  transform: rotate(0deg) scale(1.04);
+  background: var(--d3-accent);
+  color: #f7fbfe;
+  z-index: 2;
+}
+
+.d3-showcase-card img {
+  filter: grayscale(100%);
+  transition:
+    filter 300ms var(--d3-ease),
+    transform 300ms var(--d3-ease);
+}
+
+.d3-showcase-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+.d3-catalog {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  border-radius: 12px;
+  background: rgba(15, 36, 51, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 8px 10px;
+  color: #f7fbfe;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d3-cta,
+  .d3-sticky-note,
+  .d3-tab,
+  .d3-nav__pill a,
+  .d3-showcase-card img {
+    transition: none !important;
+  }
+
+  .d3-sticky-note,
+  .d3-sticky-note--cta,
+  .d3-tab {
+    transform: none !important;
+  }
+}

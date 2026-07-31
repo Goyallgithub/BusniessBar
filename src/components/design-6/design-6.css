@@ -1,0 +1,283 @@
+/* Design 6: Editorial Tech for BusinessBar */
+
+.d6 {
+  --d6-bg: #f7f6f2;
+  --d6-fg: #1c1c1c;
+  --d6-accent: #3d7068;
+  --d6-muted: #b4b4b4;
+  --d6-border: #e5e4de;
+  --d6-scan: #3b82f6;
+  --d6-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --d6-duration: 800ms;
+  position: relative;
+  min-height: 100%;
+  background: var(--d6-bg);
+  color: var(--d6-fg);
+  font-family: var(--font-space), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+.d6 * {
+  box-sizing: border-box;
+}
+
+.d6-display {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.d6-mono {
+  font-family: var(--font-mono-space), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.d6-grid-bg {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.d6-grid-bg__squares {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(229, 228, 222, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 228, 222, 0.55) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(
+    ellipse 55% 50% at 50% 40%,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 72%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 55% 50% at 50% 40%,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 72%
+  );
+}
+
+.d6-grid-bg__cols {
+  position: absolute;
+  inset: 0;
+  max-width: 80rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.d6-grid-bg__cols span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--d6-border);
+}
+
+.d6-grid-bg__cols span:nth-child(1) {
+  left: 25%;
+}
+.d6-grid-bg__cols span:nth-child(2) {
+  left: 50%;
+}
+.d6-grid-bg__cols span:nth-child(3) {
+  left: 75%;
+}
+
+.d6-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.d6-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--d6-accent);
+  color: #fff;
+  font-family: var(--font-mono-space), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition:
+    letter-spacing var(--d6-duration) var(--d6-ease),
+    box-shadow var(--d6-duration) var(--d6-ease);
+}
+
+.d6-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(100%);
+  transition: transform var(--d6-duration) var(--d6-ease);
+}
+
+.d6-btn:hover {
+  letter-spacing: 0.4em;
+}
+
+.d6-btn:hover::after {
+  transform: translateY(0);
+}
+
+.d6-btn > span {
+  position: relative;
+  z-index: 1;
+}
+
+.d6-btn-shadow {
+  box-shadow: 0 12px 28px -12px rgba(61, 112, 104, 0.55);
+}
+
+.d6-scan {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  background: var(--d6-border);
+}
+
+.d6-scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--d6-scan);
+  animation: d6-scan 2s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+}
+
+@keyframes d6-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.d6-input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--d6-border);
+  background: transparent;
+  padding: 0.85rem 0;
+  font-family: var(--font-space), system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--d6-fg);
+  outline: none;
+  border-radius: 0;
+  transition: border-color var(--d6-duration) var(--d6-ease);
+}
+
+.d6-input::placeholder {
+  font-family: var(--font-mono-space), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+
+.d6-input:focus {
+  border-bottom-color: var(--d6-accent);
+}
+
+.d6-stat {
+  padding: 40px;
+  border-right: 1px solid var(--d6-border);
+  transition:
+    background var(--d6-duration) var(--d6-ease),
+    opacity var(--d6-duration) var(--d6-ease);
+}
+
+.d6-stat:last-child {
+  border-right: 0;
+}
+
+.d6-stat:hover {
+  background: #fff;
+}
+
+.d6-tab {
+  border-radius: 2px;
+  border: 1px solid var(--d6-border);
+  background: transparent;
+  font-family: var(--font-mono-space), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--d6-fg);
+  transition:
+    background var(--d6-duration) var(--d6-ease),
+    color var(--d6-duration) var(--d6-ease),
+    border-color var(--d6-duration) var(--d6-ease);
+}
+
+.d6-tab[data-active="true"] {
+  background: var(--d6-accent);
+  border-color: var(--d6-accent);
+  color: #fff;
+}
+
+.d6-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--d6-accent);
+  box-shadow: 0 0 0 0 rgba(61, 112, 104, 0.45);
+  animation: d6-pulse 2s var(--d6-ease) infinite;
+}
+
+@keyframes d6-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(61, 112, 104, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(61, 112, 104, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(61, 112, 104, 0);
+  }
+}
+
+.d6-word {
+  opacity: 0.15;
+  transition: opacity 0.35s var(--d6-ease);
+}
+
+.d6-word[data-on="true"] {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .d6-stat {
+    border-right: 0;
+    border-bottom: 1px solid var(--d6-border);
+    padding: 28px 20px;
+  }
+
+  .d6-stat:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d6-scan::after,
+  .d6-pulse {
+    animation: none !important;
+  }
+
+  .d6-btn,
+  .d6-btn::after,
+  .d6-stat,
+  .d6-tab,
+  .d6-word {
+    transition: none !important;
+  }
+}
