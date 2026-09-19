@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 export const DESIGNS = [
   { href: "/", id: "H", label: "Home" },
   { href: "/design-1", id: "1", label: "Design 1" },
+  { href: "/design-2", id: "2", label: "Design 2" },
+  { href: "/design-3", id: "3", label: "Design 3" },
   { href: "/design-5", id: "5", label: "Design 5" },
   { href: "/design-6", id: "6", label: "Design 6" },
 ] as const;
 
-type Tone = "editorial" | "acid" | "dark" | "cinematic";
+type Tone = "editorial" | "acid" | "dark" | "cinematic" | "encore" | "kiln";
 
 const tones: Record<
   Tone,
@@ -38,6 +40,18 @@ const tones: Record<
     wrap: "border border-white/15 bg-white/5 backdrop-blur-[8px]",
     link: "text-white/45 hover:text-white",
     active: "bg-white text-black",
+    label: "text-white/30",
+  },
+  encore: {
+    wrap: "border border-[#F5F2EE6B] bg-[#0A0E1438] backdrop-blur-md",
+    link: "text-[#F8F6F3A8] hover:text-[#F8F6F3]",
+    active: "bg-[#F8F6F3] text-[#0E0F12]",
+    label: "text-[#F8F6F385]",
+  },
+  kiln: {
+    wrap: "border border-white/10 bg-black/50 backdrop-blur-md",
+    link: "text-white/40 hover:text-[#5CC4C4]",
+    active: "bg-[#5CC4C4] text-[#0A0A0A]",
     label: "text-white/30",
   },
 };

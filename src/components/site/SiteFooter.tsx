@@ -20,6 +20,12 @@ export function SiteFooter() {
             <Link href="/design-1" className="transition hover:text-[#5CC4C4]">
               Design 1
             </Link>
+            <Link href="/design-2" className="transition hover:text-[#5CC4C4]">
+              Design 2
+            </Link>
+            <Link href="/design-3" className="transition hover:text-[#5CC4C4]">
+              Design 3
+            </Link>
             <Link href="/design-5" className="transition hover:text-[#5CC4C4]">
               Design 5
             </Link>

@@ -69,6 +69,12 @@ export function D1Footer() {
             Home
           </Link>
           <span className="text-white">Design 1</span>
+          <Link href="/design-2" className="transition duration-200 hover:text-white">
+            Design 2
+          </Link>
+          <Link href="/design-3" className="transition duration-200 hover:text-white">
+            Design 3
+          </Link>
           <Link href="/design-5" className="transition duration-200 hover:text-white">
             Design 5
           </Link>

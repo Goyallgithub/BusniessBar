@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import {
   Archivo,
+  Instrument_Serif,
+  Inter,
+  JetBrains_Mono,
   Playfair_Display,
   Space_Grotesk,
   Space_Mono,
@@ -39,6 +42,24 @@ const archivo = Archivo({
   weight: ["300", "500", "700", "900"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["300", "400"],
+});
+
 export const metadata: Metadata = {
   title: "BusinessBar | Exclusive Networking, Maximum Serendipity",
   description:
@@ -53,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${spaceGrotesk.variable} ${playfair.variable} ${spaceMono.variable} ${archivo.variable} h-full antialiased`}
+      className={`${syne.variable} ${spaceGrotesk.variable} ${playfair.variable} ${spaceMono.variable} ${archivo.variable} ${instrumentSerif.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
