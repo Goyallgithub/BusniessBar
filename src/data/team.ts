@@ -4,7 +4,7 @@ export const TEAM = [
     role: "Curation",
     initial: "S",
     num: "01",
-    linkedin: "https://www.linkedin.com/company/business-bar",
+    linkedin: "https://www.linkedin.com/in/sahildhingra782",
     image:
       "https://businessbar.net/wp-content/uploads/2021/04/sahil-500x500.jpeg",
   },
@@ -13,7 +13,7 @@ export const TEAM = [
     role: "Partnerships",
     initial: "A",
     num: "02",
-    linkedin: "https://www.linkedin.com/company/business-bar",
+    linkedin: "https://www.linkedin.com/in/abhigyan-joshi",
     image:
       "https://businessbar.net/wp-content/uploads/2021/05/abhigyan-500x500.jpg",
   },
@@ -22,7 +22,7 @@ export const TEAM = [
     role: "Community",
     initial: "Y",
     num: "03",
-    linkedin: "https://www.linkedin.com/company/business-bar",
+    linkedin: "https://www.linkedin.com/in/yd98",
     image:
       "https://businessbar.net/wp-content/uploads/2022/01/DSC_0369_3_portrait-500x500.jpg",
   },
@@ -31,7 +31,7 @@ export const TEAM = [
     role: "Operations",
     initial: "N",
     num: "04",
-    linkedin: "https://www.linkedin.com/company/business-bar",
+    linkedin: "https://www.linkedin.com/in/nevilkathiria",
     image:
       "https://businessbar.net/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-27-at-1.36.25-PM-500x500.jpeg",
   },
@@ -40,7 +40,7 @@ export const TEAM = [
     role: "Growth",
     initial: "S",
     num: "05",
-    linkedin: "https://www.linkedin.com/company/business-bar",
+    linkedin: "https://www.linkedin.com/in/jindal-shivam",
     image:
       "https://businessbar.net/wp-content/uploads/2021/04/shivam-500x500.jpeg",
   },
