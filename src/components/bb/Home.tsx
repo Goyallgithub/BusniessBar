@@ -26,6 +26,16 @@ export function BBHome() {
           className="bb-hero__img"
           sizes="100vw"
         />
+        <video
+          className="bb-hero__video"
+          src="/events/reel.mp4"
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="metadata"
+          aria-hidden
+        />
         <div className="bb-hero__scrim" />
         <div className="bb-hero__grain" aria-hidden />
         <div className="bb-hero__copy">
@@ -40,11 +50,15 @@ export function BBHome() {
             Five years · Every quarter · By invitation
           </div>
           <h1 className="bb-hero__title">
-            <span className="bb-hero__line bb-hero__enter bb-hero__enter--3">
-              Exclusive networking,
+            <span className="bb-hero__line">
+              <span className="bb-hero__line-inner bb-hero__enter bb-hero__enter--3">
+                Exclusive networking,
+              </span>
             </span>
-            <span className="bb-hero__line bb-hero__enter bb-hero__enter--4">
-              maximum <span className="bb-serif">serendipity</span>
+            <span className="bb-hero__line">
+              <span className="bb-hero__line-inner bb-hero__enter bb-hero__enter--4">
+                maximum <em className="bb-hero__serif">serendipity</em>
+              </span>
             </span>
           </h1>
           <p className="bb-hero__enter bb-hero__enter--5">
