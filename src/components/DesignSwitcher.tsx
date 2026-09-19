@@ -57,7 +57,9 @@ const tones: Record<
 };
 
 function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
+  if (href === "/") {
+    return pathname === "/" || pathname === "/team" || pathname === "/library";
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

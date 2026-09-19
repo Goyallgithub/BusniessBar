@@ -39,13 +39,14 @@ const spaceMono = Space_Mono({
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["300", "500", "700", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument",
   subsets: ["latin"],
   weight: "400",
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -57,7 +58,7 @@ const inter = Inter({
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
