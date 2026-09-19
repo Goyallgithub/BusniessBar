@@ -5,7 +5,7 @@ export function D5Vision() {
       className="relative scroll-mt-24 overflow-hidden border-y border-[#CCFF00]/20 bg-[#0A0A0A] py-24 sm:py-32"
     >
       <div
-        className="d5-drift pointer-events-none absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
         style={{
           background:
             "conic-gradient(from 90deg, #ccff00, #ff00ff, #00f0ff, #ffffff, #ccff00)",

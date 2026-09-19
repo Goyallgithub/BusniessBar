@@ -74,8 +74,7 @@
 
 .d5-liquid-card {
   position: relative;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(40px) contrast(120%) brightness(110%);
+  background: rgba(10, 10, 10, 0.85);
   border-radius: 20% 80% 30% 70% / 50% 20% 80% 50%;
   overflow: hidden;
 }

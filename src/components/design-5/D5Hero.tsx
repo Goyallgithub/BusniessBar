@@ -4,19 +4,18 @@ import { D5Marquee } from "./D5Marquee";
 export function D5Hero() {
   return (
     <section className="relative min-h-[100svh] overflow-hidden pt-20">
-      {/* drifting chrome blobs */}
       <div
-        className="d5-drift pointer-events-none absolute -left-[10%] top-[12%] h-[42vw] w-[42vw] max-h-[520px] max-w-[520px] rounded-full opacity-40 blur-2xl"
+        className="pointer-events-none absolute -left-[10%] top-[12%] h-[38vw] w-[38vw] max-h-[420px] max-w-[420px] rounded-full opacity-30 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle at 30% 30%, #ffffff 0%, #888888 35%, #00f0ff55 60%, transparent 70%)",
+            "radial-gradient(circle at 30% 30%, #ffffff 0%, #00f0ff44 50%, transparent 70%)",
         }}
       />
       <div
-        className="d5-drift-alt pointer-events-none absolute -right-[8%] bottom-[8%] h-[48vw] w-[48vw] max-h-[560px] max-w-[560px] opacity-35 blur-2xl"
+        className="pointer-events-none absolute -right-[8%] bottom-[10%] h-[40vw] w-[40vw] max-h-[440px] max-w-[440px] opacity-25 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle at 60% 40%, #ccff00 0%, #ff00ff66 40%, #888888 65%, transparent 75%)",
+            "radial-gradient(circle at 60% 40%, #ccff00 0%, #ff00ff44 45%, transparent 70%)",
           borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
         }}
       />
@@ -59,11 +58,11 @@ export function D5Hero() {
         <div className="relative lg:col-span-5 lg:-mb-6 lg:translate-x-4 lg:translate-y-8">
           <div className="d5-liquid-card d5-blob-shape relative aspect-[4/5] w-full max-w-md overflow-hidden lg:ml-auto">
             <Image
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=75"
               alt="Villa evening at BusinessBar"
               fill
               priority
-              className="d5-wavy object-cover"
+              className="object-cover"
               sizes="(max-width: 1024px) 90vw, 420px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-[#CCFF00]/10" />
@@ -71,18 +70,7 @@ export function D5Hero() {
               Countryside ease. Villa charm.
             </p>
           </div>
-
-          <p
-            className="pointer-events-none absolute -left-2 top-1/4 hidden rotate-[-90deg] text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF00FF] lg:block"
-            aria-hidden
-          >
-            Maximise serendipity
-          </p>
         </div>
-      </div>
-
-      <div className="mt-4 lg:mt-8">
-        <D5Marquee reverse />
       </div>
     </section>
   );

@@ -64,7 +64,7 @@ export function D5Journey() {
                   src={b.image}
                   alt={b.title}
                   fill
-                  className="d5-wavy object-cover"
+                  className="object-cover"
                   sizes="(max-width: 768px) 90vw, 30vw"
                 />
                 <span className="absolute left-4 top-4 font-[family-name:var(--font-syne)] text-3xl font-black text-[#CCFF00] mix-blend-difference">

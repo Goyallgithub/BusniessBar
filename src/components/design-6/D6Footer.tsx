@@ -48,26 +48,13 @@ export function D6Footer() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            {[
-              ["/", "Design 1"],
-              ["/design-2", "Design 2"],
-              ["/design-3", "Design 3"],
-              ["/design-4", "Design 4"],
-              ["/design-5", "Design 5"],
-              ["/design-6", "Design 6"],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                className={`d6-mono text-[10px] ${
-                  href === "/design-6"
-                    ? "text-[#3d7068]"
-                    : "text-[#1c1c1c]/40 hover:text-[#3d7068]"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+            <Link
+              href="/design-5"
+              className="d6-mono text-[10px] text-[#1c1c1c]/40 hover:text-[#3d7068]"
+            >
+              Design 5
+            </Link>
+            <span className="d6-mono text-[10px] text-[#3d7068]">Design 6</span>
           </div>
         </div>
 

@@ -15,7 +15,7 @@ export function D5Join() {
   return (
     <section id="join" className="relative scroll-mt-24 overflow-hidden py-20 sm:py-28">
       <div
-        className="d5-drift-alt pointer-events-none absolute -right-[15%] top-0 h-[50vmin] w-[50vmin] opacity-30 blur-3xl"
+        className="pointer-events-none absolute -right-[15%] top-0 h-[50vmin] w-[50vmin] opacity-25 blur-3xl"
         style={{
           background:
             "radial-gradient(circle, #ff00ff 0%, #ccff00 40%, transparent 70%)",

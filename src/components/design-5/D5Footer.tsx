@@ -18,18 +18,6 @@ export function D5Footer() {
         </div>
 
         <div className="flex flex-wrap gap-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
-          <Link href="/" className="transition hover:text-[#CCFF00]">
-            Design 1
-          </Link>
-          <Link href="/design-2" className="transition hover:text-[#CCFF00]">
-            Design 2
-          </Link>
-          <Link href="/design-3" className="transition hover:text-[#CCFF00]">
-            Design 3
-          </Link>
-          <Link href="/design-4" className="transition hover:text-[#CCFF00]">
-            Design 4
-          </Link>
           <span className="text-[#CCFF00]">Design 5</span>
           <Link href="/design-6" className="transition hover:text-[#CCFF00]">
             Design 6

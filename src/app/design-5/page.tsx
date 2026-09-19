@@ -16,27 +16,6 @@ export const metadata = {
 export default function Design5Page() {
   return (
     <div className="d5">
-      <svg className="pointer-events-none absolute h-0 w-0" aria-hidden>
-        <defs>
-          <filter id="d5-wavy">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.015"
-              numOctaves="2"
-              result="noise"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="12"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <div className="d5-noise" aria-hidden />
       <D5Nav />
       <main>
         <D5Hero />
