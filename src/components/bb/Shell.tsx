@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { PageOpen } from "./PageOpen";
 import "./bb.css";
 
 export function BBLogo({
@@ -79,9 +80,11 @@ export function BBShell({
   children: ReactNode;
 }) {
   return (
-    <div className="bb-site bb-site--nonav">
-      {children}
-      <BBFooter />
-    </div>
+    <PageOpen>
+      <div className="bb-site bb-site--nonav">
+        {children}
+        <BBFooter />
+      </div>
+    </PageOpen>
   );
 }
