@@ -183,22 +183,13 @@
   width: auto;
   height: auto;
   display: block;
-  /* Hairline white outline — keeps black bar + glass stem visible on dark */
-  filter:
-    drop-shadow(0.5px 0 0 rgba(255, 255, 255, 0.85))
-    drop-shadow(-0.5px 0 0 rgba(255, 255, 255, 0.85))
-    drop-shadow(0 0.5px 0 rgba(255, 255, 255, 0.85))
-    drop-shadow(0 -0.5px 0 rgba(255, 255, 255, 0.85));
+  filter: none;
 }
 
 .bb-logo--hero .bb-logo__img {
   height: clamp(3.5rem, 8vw, 5.25rem);
   width: auto;
-  filter:
-    drop-shadow(0.6px 0 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(-0.6px 0 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0.6px 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0 -0.6px 0 rgba(255, 255, 255, 0.9));
+  filter: none;
 }
 
 .bb-logo--footer .bb-logo__img {
@@ -645,12 +636,17 @@
   white-space: nowrap;
 }
 
-.bb-proof__rule {
-  display: block;
-  width: 0.85em;
-  height: 0.0625rem;
+.bb-proof__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  background: rgba(237, 237, 234, 0.28);
+  font-weight: 700;
+  font-size: 1.15em;
+  line-height: 1;
+  color: rgba(237, 237, 234, 0.55);
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .bb-proof__pillars {
@@ -728,7 +724,7 @@
     padding-inline-start: 0;
     padding-top: clamp(0.5rem, 2vw, 1rem);
     border-inline-start: none;
-    border-top: none;
+    border-top: 0.0625rem solid var(--bb-line-strong);
   }
 
   .bb-proof__pillar + .bb-proof__pillar {
@@ -1535,11 +1531,7 @@
   max-height: 55%;
   object-fit: contain;
   opacity: 0.95;
-  filter:
-    drop-shadow(0.5px 0 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(-0.5px 0 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0.5px 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0 -0.5px 0 rgba(255, 255, 255, 0.9));
+  filter: none;
   transition:
     opacity 0.35s ease,
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);

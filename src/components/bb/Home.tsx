@@ -73,9 +73,13 @@ export function BBHome() {
               <div className="bb-proof__n">1,000+</div>
               <div className="bb-proof__l bb-proof__l--row">
                 <span>Founders</span>
-                <i className="bb-proof__rule" aria-hidden />
+                <span className="bb-proof__dot" aria-hidden>
+                  ·
+                </span>
                 <span>Investors</span>
-                <i className="bb-proof__rule" aria-hidden />
+                <span className="bb-proof__dot" aria-hidden>
+                  ·
+                </span>
                 <span>Operators</span>
               </div>
             </div>
