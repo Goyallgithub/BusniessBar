@@ -132,7 +132,7 @@ export function D3Close() {
         <D3Reveal>
           <h2>See you at the Bar</h2>
           <div className="d3-close__actions">
-            <a href="mailto:team@businessbar.net" className="d3-btn d3-btn--fill">
+            <a href="mailto:businessbar.blog@gmail.com" className="d3-btn d3-btn--fill">
               Request access
             </a>
             <a href="#library" className="d3-btn">

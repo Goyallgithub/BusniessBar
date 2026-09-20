@@ -1,5 +1,5 @@
-import { BBTeam } from "@/components/bb/Team";
+import { redirect } from "next/navigation";
 
 export default function TeamPage() {
-  return <BBTeam />;
+  redirect("/#hosts");
 }

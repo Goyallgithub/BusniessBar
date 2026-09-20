@@ -1,16 +1,41 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 import "./bb.css";
 
-export function BBMark({ small = false }: { small?: boolean }) {
+export function BBLogo({
+  size = "nav",
+  className = "",
+}: {
+  size?: "nav" | "hero" | "footer";
+  className?: string;
+}) {
+  const dims =
+    size === "hero"
+      ? { width: 280, height: 114 }
+      : size === "footer"
+        ? { width: 120, height: 49 }
+        : { width: 140, height: 57 };
+
   return (
-    <div className={small ? "bb-mark bb-mark--sm" : "bb-mark"} aria-hidden />
+    <span
+      className={`bb-logo bb-logo--${size}${className ? ` ${className}` : ""}`}
+    >
+      <Image
+        src="/bb-logo.png"
+        alt="BusinessBar"
+        width={dims.width}
+        height={dims.height}
+        className="bb-logo__img"
+        priority={size === "nav" || size === "hero"}
+      />
+    </span>
   );
 }
 
-export function BBNav({ active }: { active: "home" | "team" | "library" }) {
+export function BBNav({ active }: { active: "home" | "library" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -34,20 +59,18 @@ export function BBNav({ active }: { active: "home" | "team" | "library" }) {
 
   return (
     <nav className={`bb-nav${scrolled || open ? " is-scrolled" : ""}`}>
-      <Link href="/" className="bb-nav__brand" onClick={() => setOpen(false)}>
-        <BBMark />
-        <div className="bb-nav__word">
-          <span>business</span>
-          <span>bar</span>
-        </div>
+      <Link
+        href="/"
+        className="bb-nav__brand"
+        onClick={() => setOpen(false)}
+        aria-label="BusinessBar home"
+      >
+        <BBLogo size="nav" />
       </Link>
 
       <div className="bb-nav__desk">
         <Link href="/" data-active={active === "home"}>
           Home
-        </Link>
-        <Link href="/team" data-active={active === "team"}>
-          Team
         </Link>
         <Link href="/library" data-active={active === "library"}>
           Library
@@ -68,15 +91,12 @@ export function BBNav({ active }: { active: "home" | "team" | "library" }) {
       </button>
 
       <div className={`bb-nav__mobile${open ? " is-open" : ""}`} hidden={!open}>
-        <Link href="/" data-active={active === "home"} onClick={() => setOpen(false)}>
-          Home
-        </Link>
         <Link
-          href="/team"
-          data-active={active === "team"}
+          href="/"
+          data-active={active === "home"}
           onClick={() => setOpen(false)}
         >
-          Team
+          Home
         </Link>
         <Link
           href="/library"
@@ -87,10 +107,10 @@ export function BBNav({ active }: { active: "home" | "team" | "library" }) {
         </Link>
         <a
           className="bb-nav__mobile-mail"
-          href="mailto:hello@businessbar.in"
+          href="mailto:businessbar.blog@gmail.com"
           onClick={() => setOpen(false)}
         >
-          hello@businessbar.in
+          businessbar.blog@gmail.com
         </a>
       </div>
     </nav>
@@ -101,21 +121,24 @@ export function BBFooter() {
   return (
     <footer className="bb-footer">
       <div className="bb-footer__brand">
-        <BBMark small />
-        <span>
-          BusinessBar · Gurugram · Bangalore · Pune · Mumbai · San Francisco
-        </span>
+        <BBLogo size="footer" />
       </div>
       <div className="bb-footer__links">
-        <a href="mailto:hello@businessbar.in">hello@businessbar.in</a>
+        <a href="mailto:businessbar.blog@gmail.com">
+          businessbar.blog@gmail.com
+        </a>
         <a
-          href="https://www.linkedin.com/company/business-bar"
+          href="https://in.linkedin.com/company/business-bar"
           target="_blank"
           rel="noreferrer"
         >
           LinkedIn
         </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+        <a
+          href="https://www.instagram.com/businessbar.x"
+          target="_blank"
+          rel="noreferrer"
+        >
           Instagram
         </a>
       </div>
@@ -127,7 +150,7 @@ export function BBShell({
   active,
   children,
 }: {
-  active: "home" | "team" | "library";
+  active: "home" | "library";
   children: ReactNode;
 }) {
   return (

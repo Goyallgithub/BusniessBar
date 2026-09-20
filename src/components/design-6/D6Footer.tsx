@@ -4,15 +4,15 @@ import { BusinessBarLogo } from "@/components/BusinessBarLogo";
 const contacts = [
   {
     title: "Want to write for us?",
-    body: "Write to team@businessbar.net with the subject ‘Guest_your name’ and enclose an excerpt of your idea.",
+    body: "Write to businessbar.blog@gmail.com with the subject ‘Guest_your name’ and enclose an excerpt of your idea.",
   },
   {
     title: "Collaboration?",
-    body: "Organisation, fest, or conference? Write to team@businessbar.net with ‘Collaboration_event/org name’.",
+    body: "Organisation, fest, or conference? Write to businessbar.blog@gmail.com with ‘Collaboration_event/org name’.",
   },
   {
     title: "Feedback",
-    body: "Shoot to team@businessbar.net with ‘Feedback/Suggestion_your name’. We’re all-ears.",
+    body: "Shoot to businessbar.blog@gmail.com with ‘Feedback/Suggestion_your name’. We’re all-ears.",
   },
 ];
 

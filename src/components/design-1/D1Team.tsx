@@ -82,7 +82,7 @@ export function D1Footer() {
             Design 6
           </Link>
           <a
-            href="mailto:team@businessbar.net"
+            href="mailto:businessbar.blog@gmail.com"
             className="transition duration-200 hover:text-white"
           >
             Contact

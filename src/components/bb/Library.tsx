@@ -187,11 +187,10 @@ export function BBLibrary() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/businessbar-logo.png"
+                    src="/bb-logo.png"
                     alt=""
                     className="bb-mosaic__logo"
                   />
-                  <span className="bb-mosaic__logo-mark" aria-hidden />
                 </div>
               );
             }

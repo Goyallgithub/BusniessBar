@@ -29,9 +29,10 @@ export function D6Contact() {
 
           <div className="mt-10 flex flex-wrap gap-5">
             {[
-              ["http://www.linkedin.com/company/business-bar", "LinkedIn"],
+              ["https://in.linkedin.com/company/business-bar", "LinkedIn"],
               ["http://x.com/businessbarbb", "X / Twitter"],
-              ["https://www.instagram.com/businessbar.x/", "Instagram"],
+              ["https://www.instagram.com/businessbar.x", "Instagram"],
+              ["mailto:businessbar.blog@gmail.com", "Email"],
             ].map(([href, label]) => (
               <a
                 key={href}

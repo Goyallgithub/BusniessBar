@@ -27,10 +27,10 @@ export function SiteContact() {
 
           <div className="mt-10 flex flex-wrap gap-5">
             {[
-              ["http://www.linkedin.com/company/business-bar", "LinkedIn"],
+              ["https://in.linkedin.com/company/business-bar", "LinkedIn"],
               ["http://x.com/businessbarbb", "X"],
-              ["https://www.instagram.com/businessbar.x/", "Instagram"],
-              ["mailto:team@businessbar.net", "Email"],
+              ["https://www.instagram.com/businessbar.x", "Instagram"],
+              ["mailto:businessbar.blog@gmail.com", "Email"],
             ].map(([href, label]) => (
               <a
                 key={href}

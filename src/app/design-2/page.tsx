@@ -54,7 +54,7 @@ export default function Design2Page() {
               <a href="#room">Room</a>
               <a href="#invite">Invite</a>
               <a href="/">Home</a>
-              <a href="mailto:team@businessbar.net">Contact</a>
+              <a href="mailto:businessbar.blog@gmail.com">Contact</a>
             </div>
 
             <a href="#invite" className="d2-buy">
@@ -143,7 +143,7 @@ export default function Design2Page() {
             </p>
             <div className="d2-cta__action">
               <a
-                href="mailto:team@businessbar.net"
+                href="mailto:businessbar.blog@gmail.com"
                 className="d2-btn d2-btn--filled"
               >
                 Request access

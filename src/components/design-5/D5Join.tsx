@@ -72,7 +72,7 @@ export function D5Join() {
 
           <div className="mt-8 flex flex-wrap gap-5 text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
             <a
-              href="http://www.linkedin.com/company/business-bar"
+              href="https://in.linkedin.com/company/business-bar"
               target="_blank"
               rel="noreferrer"
               className="transition hover:text-[#CCFF00]"
@@ -88,7 +88,7 @@ export function D5Join() {
               X / Twitter
             </a>
             <a
-              href="mailto:hello@businessbar.net"
+              href="mailto:businessbar.blog@gmail.com"
               className="transition hover:text-[#CCFF00]"
             >
               Email
