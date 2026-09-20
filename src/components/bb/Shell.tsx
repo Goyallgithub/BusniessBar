@@ -2,118 +2,43 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import "./bb.css";
 
 export function BBLogo({
-  size = "nav",
+  size = "hero",
   className = "",
+  href = "/",
 }: {
-  size?: "nav" | "hero" | "footer";
+  size?: "hero" | "footer";
   className?: string;
+  href?: string | false;
 }) {
   const dims =
-    size === "hero"
-      ? { width: 280, height: 114 }
-      : size === "footer"
-        ? { width: 120, height: 49 }
-        : { width: 140, height: 57 };
+    size === "footer"
+      ? { width: 160, height: 59 }
+      : { width: 280, height: 102 };
 
-  return (
+  const mark = (
     <span
       className={`bb-logo bb-logo--${size}${className ? ` ${className}` : ""}`}
     >
       <Image
-        src="/bb-logo.png"
+        src="/bb-logo-full.png"
         alt="BusinessBar"
         width={dims.width}
         height={dims.height}
         className="bb-logo__img"
-        priority={size === "nav" || size === "hero"}
+        priority={size === "hero"}
       />
     </span>
   );
-}
 
-export function BBNav({ active }: { active: "home" | "library" }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [active]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
+  if (href === false) return mark;
   return (
-    <nav className={`bb-nav${scrolled || open ? " is-scrolled" : ""}`}>
-      <Link
-        href="/"
-        className="bb-nav__brand"
-        onClick={() => setOpen(false)}
-        aria-label="BusinessBar home"
-      >
-        <BBLogo size="nav" />
-      </Link>
-
-      <div className="bb-nav__desk">
-        <Link href="/" data-active={active === "home"}>
-          Home
-        </Link>
-        <Link href="/library" data-active={active === "library"}>
-          Library
-        </Link>
-        <span className="bb-pill">
-          <i /> Invite only
-        </span>
-      </div>
-
-      <button
-        type="button"
-        className={`bb-nav__menu-btn${open ? " is-open" : ""}`}
-        aria-label={open ? "Close menu" : "Open menu"}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        {open ? "Close" : "Menu"}
-      </button>
-
-      <div className={`bb-nav__mobile${open ? " is-open" : ""}`} hidden={!open}>
-        <Link
-          href="/"
-          data-active={active === "home"}
-          onClick={() => setOpen(false)}
-        >
-          Home
-        </Link>
-        <Link
-          href="/library"
-          data-active={active === "library"}
-          onClick={() => setOpen(false)}
-        >
-          Library
-        </Link>
-        <a
-          className="bb-nav__mobile-mail"
-          href="mailto:businessbar.blog@gmail.com"
-          onClick={() => setOpen(false)}
-        >
-          businessbar.blog@gmail.com
-        </a>
-      </div>
-    </nav>
+    <Link href={href} className="bb-logo-link" aria-label="BusinessBar home">
+      {mark}
+    </Link>
   );
 }
 
@@ -147,15 +72,14 @@ export function BBFooter() {
 }
 
 export function BBShell({
-  active,
+  active: _active,
   children,
 }: {
   active: "home" | "library";
   children: ReactNode;
 }) {
   return (
-    <div className="bb-site">
-      <BBNav active={active} />
+    <div className="bb-site bb-site--nonav">
       {children}
       <BBFooter />
     </div>

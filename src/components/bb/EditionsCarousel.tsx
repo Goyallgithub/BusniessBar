@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 const SLIDES = [
-  { src: "/events/ev-rooftop.jpeg", city: "Gurugram", label: "Rooftop" },
-  { src: "/events/ev-signage.jpeg", city: "Gurugram", label: "Welcome" },
-  { src: "/events/ev-04.jpeg", city: "San Francisco", label: "IIT Bombay night" },
-  { src: "/events/ev-villa.jpeg", city: "Countryside", label: "Villa" },
-  { src: "/events/ev-07.jpeg", city: "Bangalore", label: "The menu" },
-  { src: "/events/ev-sf-loft.jpeg", city: "San Francisco", label: "Loft" },
+  { src: "/events/ev-rooftop.jpeg", city: "Bangalore" },
+  { src: "/events/ev-signage.jpeg", city: "Bangalore" },
+  { src: "/events/ev-04.jpeg", city: "San Francisco" },
+  { src: "/events/ev-villa.jpeg", city: "Countryside" },
+  { src: "/events/ev-07.jpeg", city: "Bangalore" },
+  { src: "/events/ev-sf-loft.jpeg", city: "San Francisco" },
 ] as const;
 
 export function EditionsCarousel() {
@@ -39,19 +39,19 @@ export function EditionsCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="bb-editions__head">
-        <div>
-          <div className="bb-eyebrow" style={{ marginBottom: 12 }}>
-            Film roll
-          </div>
-          <h2>From the last few editions</h2>
-        </div>
-        <Link href="/library" className="bb-editions__library">
-          Open photo library →
-        </Link>
+        <h2>
+          <Link href="/library" className="bb-editions__title-link">
+            From the last few editions
+          </Link>
+        </h2>
       </div>
 
       <div className="bb-stage">
-        <div className="bb-stage__frame">
+        <Link
+          href="/library"
+          className="bb-stage__frame"
+          aria-label="Open photo library"
+        >
           {SLIDES.map((slide, i) => (
             <div
               key={slide.src}
@@ -72,13 +72,20 @@ export function EditionsCarousel() {
           <div className="bb-stage__scrim" aria-hidden />
           <div className="bb-stage__meta">
             <span className="bb-stage__city">{active.city}</span>
-            <span className="bb-stage__label">{active.label}</span>
           </div>
-          <div className="bb-stage__nav">
+          <div
+            className="bb-stage__nav"
+            onClick={(e) => e.preventDefault()}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
               className="bb-editions__arrow"
-              onClick={prev}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                prev();
+              }}
               aria-label="Previous"
             >
               ←
@@ -90,13 +97,17 @@ export function EditionsCarousel() {
             <button
               type="button"
               className="bb-editions__arrow"
-              onClick={next}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                next();
+              }}
               aria-label="Next"
             >
               →
             </button>
           </div>
-        </div>
+        </Link>
 
         <div className="bb-stage__thumbs" role="tablist" aria-label="Editions">
           {SLIDES.map((slide, i) => (
@@ -107,7 +118,7 @@ export function EditionsCarousel() {
               aria-selected={i === index}
               className={`bb-stage__thumb${i === index ? " is-active" : ""}`}
               onClick={() => setIndex(i)}
-              aria-label={`${slide.city} ${slide.label}`}
+              aria-label={slide.city}
             >
               <span className="bb-stage__media">
                 <Image src={slide.src} alt="" fill sizes="160px" />

@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { BBShell } from "./Shell";
+import { BBLogo, BBShell } from "./Shell";
 import { Reveal } from "./Reveal";
 
-type Span = "hero" | "tall" | "wide" | "sq" | "slim";
+type Span = "hero" | "tall" | "wide" | "sq";
 
 type MediaTile = {
   kind: "image" | "video";
@@ -21,116 +21,135 @@ type LogoTile = {
 
 type Tile = MediaTile | LogoTile;
 
-/**
- * Sized to real asset ratios:
- * - portraits (~0.67–0.75) → tall
- * - landscapes (~2.0) → wide
- * - reel → hero
- * Logo tiles pack into leftover dense-grid holes.
- */
 const TILES: Tile[] = [
   {
     kind: "image",
-    src: "/events/ev-rooftop.jpeg",
-    label: "Rooftop · Gurugram",
+    src: "/events/ev-bb-01.jpg",
+    label: "Bangalore",
+    span: "wide",
+  },
+  {
+    kind: "image",
+    src: "/events/ev-bb-03.jpg",
+    label: "Bangalore",
     span: "tall",
   },
   {
     kind: "video",
     src: "/events/reel.mp4",
-    label: "Edition reel",
+    label: "Bangalore",
     span: "hero",
   },
   {
     kind: "image",
-    src: "/events/ev-sf-loft.jpeg",
-    label: "Loft · San Francisco",
+    src: "/events/ev-bb-04.jpg",
+    label: "Bangalore",
     span: "tall",
   },
-  { kind: "logo", id: "L1", span: "sq" },
+  {
+    kind: "image",
+    src: "/events/ev-bb-05.jpg",
+    label: "Bangalore",
+    span: "tall",
+  },
+  {
+    kind: "image",
+    src: "/events/ev-bb-02.jpg",
+    label: "Bangalore",
+    span: "tall",
+  },
+  {
+    kind: "image",
+    src: "/events/ev-rooftop.jpeg",
+    label: "Bangalore",
+    span: "tall",
+  },
+  {
+    kind: "image",
+    src: "/events/ev-sf-loft.jpeg",
+    label: "San Francisco",
+    span: "tall",
+  },
   {
     kind: "image",
     src: "/events/ev-villa.jpeg",
-    label: "Villa · Countryside",
+    label: "Countryside",
     span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789822931591-xhs7.jpeg",
-    label: "Wide · room",
-    span: "wide",
   },
   {
     kind: "image",
     src: "/events/ev-signage.jpeg",
-    label: "Signage",
+    label: "Bangalore",
     span: "tall",
   },
-  { kind: "logo", id: "L2", span: "slim" },
   {
     kind: "image",
     src: "/events/ev-04.jpeg",
-    label: "IIT Bombay · SF",
+    label: "San Francisco",
     span: "tall",
   },
-  {
-    kind: "image",
-    src: "/events/assets-1789823479615-ofka.jpeg",
-    label: "Evening · crowd",
-    span: "tall",
-  },
-  { kind: "logo", id: "L3", span: "wide" },
   {
     kind: "image",
     src: "/events/ev-07.jpeg",
-    label: "The menu",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823479607-vnqh.jpeg",
-    label: "Conversation",
+    label: "Bangalore",
     span: "tall",
   },
   {
     kind: "image",
     src: "/events/ev-08.jpeg",
-    label: "Welcome board",
+    label: "Bangalore",
+    span: "wide",
+  },
+  {
+    kind: "image",
+    src: "/events/assets-1789822931591-xhs7.jpeg",
+    label: "Bangalore",
+    span: "wide",
+  },
+  {
+    kind: "image",
+    src: "/events/assets-1789823479615-ofka.jpeg",
+    label: "Bangalore",
     span: "tall",
   },
-  { kind: "logo", id: "L4", span: "sq" },
+  {
+    kind: "image",
+    src: "/events/assets-1789823479607-vnqh.jpeg",
+    label: "Bangalore",
+    span: "tall",
+  },
   {
     kind: "image",
     src: "/events/assets-1789823941774-mj61.jpeg",
-    label: "Night · table",
+    label: "Bangalore",
     span: "tall",
   },
   {
     kind: "image",
     src: "/events/assets-1789823941759-c45t.jpeg",
-    label: "Corner light",
+    label: "Bangalore",
     span: "tall",
   },
-  { kind: "logo", id: "L5", span: "slim" },
   {
     kind: "image",
     src: "/events/assets-1789823479589-bebi.jpeg",
-    label: "Guests",
+    label: "San Francisco",
     span: "tall",
   },
   {
     kind: "image",
     src: "/events/assets-1789823941782-7giz.jpeg",
-    label: "Pour",
+    label: "Bangalore",
     span: "tall",
   },
-  { kind: "logo", id: "L6", span: "sq" },
   {
     kind: "image",
     src: "/events/assets-1789823941779-z08o.jpeg",
-    label: "Close of night",
+    label: "Bangalore",
     span: "tall",
   },
+  /* single brand close — once, at the end */
+  { kind: "logo", id: "end", span: "wide" },
 ];
 
 export function BBLibrary() {
@@ -157,6 +176,9 @@ export function BBLibrary() {
   return (
     <BBShell active="library">
       <div className="bb-library">
+        <div className="bb-library__top">
+          <BBLogo size="footer" />
+        </div>
         <Reveal>
           <div className="bb-library__head">
             <div>
@@ -168,8 +190,8 @@ export function BBLibrary() {
               </h1>
             </div>
             <p className="bb-library__lede">
-              Portraits stay tall, reels stay wide, and empty cells wear the
-              BusinessBar mark — a denser night, not a cropped scrapbook.
+              Still frames from the nights : portraits, reels, and the rooms
+              between conversations.
             </p>
           </div>
         </Reveal>
@@ -181,13 +203,13 @@ export function BBLibrary() {
                 <div
                   key={tile.id}
                   role="listitem"
-                  className={`bb-mosaic__cell bb-mosaic__cell--logo bb-mosaic__cell--${tile.span}`}
-                  style={{ animationDelay: `${i * 28}ms` }}
+                  className="bb-mosaic__cell bb-mosaic__cell--logo bb-mosaic__cell--end"
+                  style={{ animationDelay: `${i * 24}ms` }}
                   aria-hidden
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/bb-logo.png"
+                    src="/bb-logo-full.png"
                     alt=""
                     className="bb-mosaic__logo"
                   />
@@ -197,13 +219,13 @@ export function BBLibrary() {
 
             return (
               <button
-                key={`${tile.src}-${tile.label}`}
+                key={`${tile.src}-${tile.label}-${i}`}
                 type="button"
                 role="listitem"
                 className={`bb-mosaic__cell bb-mosaic__cell--${tile.span}${
                   tile.kind === "video" ? " is-video" : ""
                 }`}
-                style={{ animationDelay: `${i * 28}ms` }}
+                style={{ animationDelay: `${i * 24}ms` }}
                 aria-label={`Open ${tile.label}`}
                 onClick={() =>
                   setLightbox({ kind: tile.kind, src: tile.src })
@@ -223,20 +245,11 @@ export function BBLibrary() {
                   <img src={tile.src} alt="" />
                 )}
                 <span className="bb-mosaic__shade" aria-hidden />
-                <span className="bb-mosaic__cap">
-                  {tile.kind === "video" ? (
-                    <span className="bb-mosaic__live">Reel</span>
-                  ) : null}
-                  {tile.label}
-                </span>
+                <span className="bb-mosaic__cap">{tile.label}</span>
               </button>
             );
           })}
         </div>
-
-        <p className="bb-note" style={{ marginTop: 28 }}>
-          Dense mosaic · photos keep their proportions · logos fill the gaps.
-        </p>
       </div>
 
       {lightbox ? (

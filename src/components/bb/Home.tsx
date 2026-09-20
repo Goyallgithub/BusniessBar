@@ -33,7 +33,7 @@ export function BBHome() {
 
         <div className="bb-hero__copy">
           <div className="bb-hero__brand bb-hero__enter bb-hero__enter--1">
-            <BBLogo size="hero" />
+            <BBLogo size="hero" href={false} />
           </div>
 
           <h1 className="bb-hero__title">
