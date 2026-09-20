@@ -124,10 +124,17 @@
   }
 }
 
-@keyframes bb-page-enter {
+@keyframes bb-route-leave {
+  to {
+    opacity: 0.35;
+    filter: blur(1.5px);
+  }
+}
+
+@keyframes bb-route-enter {
   from {
-    opacity: 0.72;
-    transform: translateY(10px) scale(0.992);
+    opacity: 0;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -135,104 +142,90 @@
   }
 }
 
-@keyframes bb-page-leave {
-  to {
+@keyframes bb-type-leave {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.28em;
+    transform: translateY(4px);
+  }
+  35% {
+    opacity: 0.92;
+    letter-spacing: 0.14em;
+    transform: none;
+  }
+  100% {
+    opacity: 0.92;
+    letter-spacing: 0.12em;
+    transform: none;
+  }
+}
+
+@keyframes bb-type-enter {
+  0% {
+    opacity: 0.85;
+    letter-spacing: 0.12em;
+    filter: blur(0);
+  }
+  55% {
     opacity: 0.55;
-    transform: scale(0.988);
+    letter-spacing: 0.32em;
+    filter: blur(0.4px);
+  }
+  100% {
+    opacity: 0;
+    letter-spacing: 0.48em;
+    filter: blur(1px);
   }
 }
 
-@keyframes bb-open-in-l {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-101%);
-  }
-}
-
-@keyframes bb-open-in-r {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(101%);
-  }
-}
-
-@keyframes bb-open-out-l {
-  from {
-    transform: translateX(-101%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes bb-open-out-r {
-  from {
-    transform: translateX(101%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* Soft door-open on internal BB link clicks */
-.bb-page {
+/* Subtle typographic open on internal BB links */
+.bb-route {
   min-height: 100%;
-  transform-origin: 50% 12%;
 }
 
-.bb-page.is-enter {
-  animation: bb-page-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.bb-page.is-leave {
-  animation: bb-page-leave 0.3s ease both;
+.bb-route.is-leave {
+  animation: bb-route-leave 0.34s ease both;
   pointer-events: none;
 }
 
-.bb-open {
+.bb-route.is-enter {
+  animation: bb-route-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.bb-type-open {
   position: fixed;
   inset: 0;
   z-index: 80;
-  display: flex;
+  display: grid;
+  place-items: center;
   pointer-events: none;
   visibility: hidden;
+  background: transparent;
 }
 
-.bb-open.is-closing,
-.bb-open.is-opening {
+.bb-type-open.is-leave,
+.bb-type-open.is-enter {
   visibility: visible;
 }
 
-.bb-open__panel {
-  flex: 1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8, 10, 9, 0.97) 0%,
-      rgba(12, 16, 14, 0.98) 55%,
-      rgba(8, 10, 9, 0.97) 100%
-    );
-  box-shadow: inset 0 0 0 1px rgba(92, 200, 184, 0.06);
+.bb-type-open__word {
+  margin: 0;
+  font-family: var(--font-instrument), "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+  color: rgba(237, 237, 234, 0.9);
+  text-transform: none;
+  white-space: nowrap;
+  opacity: 0;
 }
 
-.bb-open.is-closing .bb-open__panel--l {
-  animation: bb-open-out-l 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+.bb-type-open.is-leave .bb-type-open__word {
+  animation: bb-type-leave 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.bb-open.is-closing .bb-open__panel--r {
-  animation: bb-open-out-r 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.bb-open.is-opening .bb-open__panel--l {
-  animation: bb-open-in-l 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.bb-open.is-opening .bb-open__panel--r {
-  animation: bb-open-in-r 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+.bb-type-open.is-enter .bb-type-open__word {
+  animation: bb-type-enter 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .bb-reveal {
@@ -2035,16 +2028,17 @@
   .bb-pill i,
   .bb-mosaic__cell,
   .bb-hero__line-inner,
-  .bb-page,
-  .bb-open,
-  .bb-open__panel {
+  .bb-route,
+  .bb-type-open,
+  .bb-type-open__word {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 
-  .bb-open {
+  .bb-type-open {
     visibility: hidden !important;
   }
 }

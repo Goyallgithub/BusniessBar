@@ -10,17 +10,31 @@ function prefersReducedMotion() {
   );
 }
 
+function labelFor(path: string) {
+  if (path.startsWith("/library")) return "Library";
+  if (path === "/" || path === "") return "Home";
+  return "BusinessBar";
+}
+
 export function PageOpen({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [phase, setPhase] = useState<"enter" | "idle" | "leave">("enter");
+  const [phase, setPhase] = useState<"enter" | "idle" | "leave">("idle");
+  const [label, setLabel] = useState(() => labelFor(pathname));
   const leavingTo = useRef<string | null>(null);
+  const fromNav = useRef(false);
   const timer = useRef<number | null>(null);
 
   useEffect(() => {
+    if (!fromNav.current) {
+      setPhase("idle");
+      return;
+    }
+    fromNav.current = false;
+    setLabel(labelFor(pathname));
     setPhase("enter");
     leavingTo.current = null;
-    const id = window.setTimeout(() => setPhase("idle"), 560);
+    const id = window.setTimeout(() => setPhase("idle"), 680);
     return () => window.clearTimeout(id);
   }, [pathname]);
 
@@ -38,7 +52,12 @@ export function PageOpen({ children }: { children: ReactNode }) {
       if (anchor.hasAttribute("download")) return;
 
       const href = anchor.getAttribute("href");
-      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+      if (
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:")
+      ) {
         return;
       }
 
@@ -51,13 +70,13 @@ export function PageOpen({ children }: { children: ReactNode }) {
 
       if (url.origin !== window.location.origin) return;
 
-      const next =
-        url.pathname + url.search + url.hash;
+      const next = url.pathname + url.search + url.hash;
       const current =
-        window.location.pathname + window.location.search + window.location.hash;
+        window.location.pathname +
+        window.location.search +
+        window.location.hash;
       if (next === current) return;
 
-      // Stay inside BB routes only
       const path = url.pathname;
       if (path !== "/" && path !== "/library" && path !== "/team") return;
 
@@ -71,12 +90,14 @@ export function PageOpen({ children }: { children: ReactNode }) {
 
       if (leavingTo.current) return;
       leavingTo.current = next;
+      fromNav.current = true;
+      setLabel(labelFor(path));
       setPhase("leave");
 
       if (timer.current) window.clearTimeout(timer.current);
       timer.current = window.setTimeout(() => {
         router.push(next);
-      }, 320);
+      }, 380);
     };
 
     document.addEventListener("click", onClick, true);
@@ -89,20 +110,19 @@ export function PageOpen({ children }: { children: ReactNode }) {
   return (
     <>
       <div
-        className={`bb-page${phase === "enter" ? " is-enter" : ""}${
+        className={`bb-route${phase === "enter" ? " is-enter" : ""}${
           phase === "leave" ? " is-leave" : ""
         }`}
       >
         {children}
       </div>
       <div
-        className={`bb-open${phase === "leave" ? " is-closing" : ""}${
-          phase === "enter" ? " is-opening" : ""
+        className={`bb-type-open${phase === "leave" ? " is-leave" : ""}${
+          phase === "enter" ? " is-enter" : ""
         }`}
         aria-hidden
       >
-        <span className="bb-open__panel bb-open__panel--l" />
-        <span className="bb-open__panel bb-open__panel--r" />
+        <p className="bb-type-open__word">{label}</p>
       </div>
     </>
   );
