@@ -73,13 +73,13 @@ const TILES: Tile[] = [
   {
     kind: "image",
     src: "/events/ev-villa.jpeg",
-    label: "Countryside",
+    label: "Gurugram",
     span: "tall",
   },
   {
     kind: "image",
     src: "/events/ev-signage.jpeg",
-    label: "Bangalore",
+    label: "Gurugram",
     span: "tall",
   },
   {
@@ -91,7 +91,7 @@ const TILES: Tile[] = [
   {
     kind: "image",
     src: "/events/ev-07.jpeg",
-    label: "Bangalore",
+    label: "Gurugram",
     span: "tall",
   },
   {

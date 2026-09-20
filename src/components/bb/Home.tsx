@@ -54,7 +54,7 @@ export function BBHome() {
           </p>
           <div className="bb-hero__cta bb-hero__enter bb-hero__enter--6">
             <Link href="/library" className="bb-hero__ghost">
-              See a night →
+              Inside business bar
             </Link>
           </div>
         </div>
@@ -92,7 +92,7 @@ export function BBHome() {
             </article>
             <article className="bb-proof__pillar">
               <h3>Absolutely no agenda</h3>
-              <p>Good cocktails and conversations that unfold naturally</p>
+              <p>Free flowing drinks and conversations</p>
             </article>
           </div>
         </section>

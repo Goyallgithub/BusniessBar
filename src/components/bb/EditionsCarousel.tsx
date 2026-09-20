@@ -6,10 +6,10 @@ import { useCallback, useEffect, useState } from "react";
 
 const SLIDES = [
   { src: "/events/ev-rooftop.jpeg", city: "Bangalore" },
-  { src: "/events/ev-signage.jpeg", city: "Bangalore" },
+  { src: "/events/ev-signage.jpeg", city: "Gurugram" },
   { src: "/events/ev-04.jpeg", city: "San Francisco" },
-  { src: "/events/ev-villa.jpeg", city: "Countryside" },
-  { src: "/events/ev-07.jpeg", city: "Bangalore" },
+  { src: "/events/ev-villa.jpeg", city: "Gurugram" },
+  { src: "/events/ev-07.jpeg", city: "Gurugram" },
   { src: "/events/ev-sf-loft.jpeg", city: "San Francisco" },
 ] as const;
 
