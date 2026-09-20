@@ -123,111 +123,6 @@
     opacity: 0;
   }
 }
-
-@keyframes bb-route-leave {
-  to {
-    opacity: 0.35;
-    filter: blur(1.5px);
-  }
-}
-
-@keyframes bb-route-enter {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes bb-type-leave {
-  0% {
-    opacity: 0;
-    letter-spacing: 0.28em;
-    transform: translateY(4px);
-  }
-  35% {
-    opacity: 0.92;
-    letter-spacing: 0.14em;
-    transform: none;
-  }
-  100% {
-    opacity: 0.92;
-    letter-spacing: 0.12em;
-    transform: none;
-  }
-}
-
-@keyframes bb-type-enter {
-  0% {
-    opacity: 0.85;
-    letter-spacing: 0.12em;
-    filter: blur(0);
-  }
-  55% {
-    opacity: 0.55;
-    letter-spacing: 0.32em;
-    filter: blur(0.4px);
-  }
-  100% {
-    opacity: 0;
-    letter-spacing: 0.48em;
-    filter: blur(1px);
-  }
-}
-
-/* Subtle typographic open on internal BB links */
-.bb-route {
-  min-height: 100%;
-}
-
-.bb-route.is-leave {
-  animation: bb-route-leave 0.34s ease both;
-  pointer-events: none;
-}
-
-.bb-route.is-enter {
-  animation: bb-route-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
-}
-
-.bb-type-open {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  visibility: hidden;
-  background: transparent;
-}
-
-.bb-type-open.is-leave,
-.bb-type-open.is-enter {
-  visibility: visible;
-}
-
-.bb-type-open__word {
-  margin: 0;
-  font-family: var(--font-instrument), "Instrument Serif", Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.35rem, 3.2vw, 2rem);
-  color: rgba(237, 237, 234, 0.9);
-  text-transform: none;
-  white-space: nowrap;
-  opacity: 0;
-}
-
-.bb-type-open.is-leave .bb-type-open__word {
-  animation: bb-type-leave 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.bb-type-open.is-enter .bb-type-open__word {
-  animation: bb-type-enter 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 .bb-reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -2027,18 +1922,10 @@
   .bb-mark,
   .bb-pill i,
   .bb-mosaic__cell,
-  .bb-hero__line-inner,
-  .bb-route,
-  .bb-type-open,
-  .bb-type-open__word {
+  .bb-hero__line-inner {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
-  }
-
-  .bb-type-open {
-    visibility: hidden !important;
   }
 }
