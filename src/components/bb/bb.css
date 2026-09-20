@@ -728,7 +728,11 @@
     padding-inline-start: 0;
     padding-top: clamp(0.5rem, 2vw, 1rem);
     border-inline-start: none;
-    border-top: 0.0625rem solid var(--bb-line-strong);
+    border-top: none;
+  }
+
+  .bb-proof__pillar + .bb-proof__pillar {
+    border-top: none;
   }
 }
 

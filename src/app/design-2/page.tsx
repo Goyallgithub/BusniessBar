@@ -68,7 +68,7 @@ export default function Design2Page() {
             <h1>Leave the pitch. Find the room.</h1>
             <p className="d2-hero__lede">
               Intimate evenings for entrepreneurs, investors, operators, and
-              thinkers who thrive on meaningful conversation. Arrive, converse,
+              thinkers who thrive on meaningful conversations. Arrive, converse,
               connect. Maximum serendipity.
             </p>
             <div className="d2-hero__actions">

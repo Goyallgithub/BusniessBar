@@ -50,11 +50,11 @@ export function BBHome() {
           </h1>
           <p className="bb-hero__enter bb-hero__enter--5">
             Intimate evenings for founders, investors, and operators who thrive
-            on conversation. Not an event. An experience.
+            on conversations. Not an event. An experience.
           </p>
           <div className="bb-hero__cta bb-hero__enter bb-hero__enter--6">
             <Link href="/library" className="bb-hero__ghost">
-              Inside business bar
+              Inside BusinessBar
             </Link>
           </div>
         </div>
