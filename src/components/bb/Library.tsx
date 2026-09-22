@@ -209,7 +209,7 @@ export function BBLibrary() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/bb-logo-full.png"
+                    src="/bb-logo-full-v3.png"
                     alt=""
                     className="bb-mosaic__logo"
                   />

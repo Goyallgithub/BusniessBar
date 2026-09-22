@@ -36,23 +36,22 @@ export function BBHome() {
             <BBLogo size="hero" href={false} />
           </div>
 
-          <h1 className="bb-hero__title">
-            <span className="bb-hero__line">
-              <span className="bb-hero__line-inner bb-hero__enter bb-hero__enter--3">
-                Exclusive networking,
-              </span>
-            </span>
-            <span className="bb-hero__line">
-              <span className="bb-hero__line-inner bb-hero__enter bb-hero__enter--4">
-                maximum <em className="bb-hero__serif">serendipity</em>
-              </span>
-            </span>
+          <h1 className="bb-hero__title bb-hero__enter bb-hero__enter--2">
+            Exclusive networking,
+            <br />
+            maximum <em>serendipity</em>
           </h1>
-          <p className="bb-hero__enter bb-hero__enter--5">
-            Intimate evenings for founders, investors, and operators who thrive
-            on conversations. Not an event. An experience.
+
+          <p className="bb-hero__lede bb-hero__enter bb-hero__enter--3">
+            <span className="bb-hero__nowrap">
+              Intimate evenings for founders, investors, and operators who
+              thrive on conversations.
+            </span>
+            <br />
+            Not an event. <strong>An experience.</strong>
           </p>
-          <div className="bb-hero__cta bb-hero__enter bb-hero__enter--6">
+
+          <div className="bb-hero__cta bb-hero__enter bb-hero__enter--4">
             <Link href="/library" className="bb-hero__ghost">
               Inside BusinessBar
             </Link>
@@ -113,7 +112,6 @@ export function BBHome() {
             <span className="bb-invite__glue">There is no sign-up form.</span>
             <em className="bb-invite__punch">There never was.</em>
           </h2>
-         
 
           <div className="bb-hosts">
             <p className="bb-hosts__label">The hosts</p>

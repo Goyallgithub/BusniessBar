@@ -24,7 +24,7 @@ export function BBLogo({
       className={`bb-logo bb-logo--${size}${className ? ` ${className}` : ""}`}
     >
       <Image
-        src="/bb-logo-full.png"
+        src="/bb-logo-full-v3.png"
         alt="BusinessBar"
         width={dims.width}
         height={dims.height}
