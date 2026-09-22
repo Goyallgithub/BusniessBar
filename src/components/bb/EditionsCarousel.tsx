@@ -5,18 +5,17 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 const SLIDES = [
-  { src: "/events/ev-rooftop.jpeg", city: "Bangalore" },
-  { src: "/events/ev-signage.jpeg", city: "Gurugram" },
-  { src: "/events/ev-04.jpeg", city: "San Francisco" },
-  { src: "/events/ev-villa.jpeg", city: "Gurugram" },
-  { src: "/events/ev-07.jpeg", city: "Gurugram" },
-  { src: "/events/ev-sf-loft.jpeg", city: "San Francisco" },
+  { src: "/events/ev-rooftop.jpeg" },
+  { src: "/events/ev-signage.jpeg" },
+  { src: "/events/ev-bb-01.jpg" },
+  { src: "/events/ev-villa.jpeg" },
+  { src: "/events/ev-07.jpeg", fit: "contain" as const },
+  { src: "/events/ev-sf-loft.jpeg" },
 ] as const;
 
 export function EditionsCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const active = SLIDES[index];
 
   const next = useCallback(() => {
     setIndex((i) => (i + 1) % SLIDES.length);
@@ -55,7 +54,11 @@ export function EditionsCarousel() {
           {SLIDES.map((slide, i) => (
             <div
               key={slide.src}
-              className={`bb-stage__slide${i === index ? " is-active" : ""}`}
+              className={`bb-stage__slide${i === index ? " is-active" : ""}${
+                "fit" in slide && slide.fit === "contain"
+                  ? " is-contain"
+                  : ""
+              }`}
               aria-hidden={i !== index}
             >
               <div className="bb-stage__media">
@@ -70,9 +73,6 @@ export function EditionsCarousel() {
             </div>
           ))}
           <div className="bb-stage__scrim" aria-hidden />
-          <div className="bb-stage__meta">
-            <span className="bb-stage__city">{active.city}</span>
-          </div>
           <div
             className="bb-stage__nav"
             onClick={(e) => e.preventDefault()}
@@ -116,9 +116,13 @@ export function EditionsCarousel() {
               type="button"
               role="tab"
               aria-selected={i === index}
-              className={`bb-stage__thumb${i === index ? " is-active" : ""}`}
+              className={`bb-stage__thumb${i === index ? " is-active" : ""}${
+                "fit" in slide && slide.fit === "contain"
+                  ? " is-contain"
+                  : ""
+              }`}
               onClick={() => setIndex(i)}
-              aria-label={slide.city}
+              aria-label={`Edition ${i + 1}`}
             >
               <span className="bb-stage__media">
                 <Image src={slide.src} alt="" fill sizes="160px" />

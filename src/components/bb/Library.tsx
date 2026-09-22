@@ -6,21 +6,15 @@ import { Reveal } from "./Reveal";
 
 type Span = "hero" | "tall" | "wide" | "sq";
 
-type MediaTile = {
+type Tile = {
   kind: "image" | "video";
   src: string;
   label: string;
   span: Span;
+  fit?: "contain";
 };
 
-type LogoTile = {
-  kind: "logo";
-  span: Span;
-  id: string;
-};
-
-type Tile = MediaTile | LogoTile;
-
+/* Unique event media only — duplicates and flat logo assets omitted */
 const TILES: Tile[] = [
   {
     kind: "image",
@@ -29,16 +23,16 @@ const TILES: Tile[] = [
     span: "wide",
   },
   {
-    kind: "image",
-    src: "/events/ev-bb-03.jpg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
     kind: "video",
     src: "/events/reel.mp4",
     label: "Bangalore",
     span: "hero",
+  },
+  {
+    kind: "image",
+    src: "/events/ev-bb-03.jpg",
+    label: "Bangalore",
+    span: "tall",
   },
   {
     kind: "image",
@@ -93,63 +87,15 @@ const TILES: Tile[] = [
     src: "/events/ev-07.jpeg",
     label: "Gurugram",
     span: "tall",
+    fit: "contain",
   },
   {
     kind: "image",
     src: "/events/ev-08.jpeg",
     label: "Bangalore",
     span: "wide",
+    fit: "contain",
   },
-  {
-    kind: "image",
-    src: "/events/assets-1789822931591-xhs7.jpeg",
-    label: "Bangalore",
-    span: "wide",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823479615-ofka.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823479607-vnqh.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823941774-mj61.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823941759-c45t.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823479589-bebi.jpeg",
-    label: "San Francisco",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823941782-7giz.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  {
-    kind: "image",
-    src: "/events/assets-1789823941779-z08o.jpeg",
-    label: "Bangalore",
-    span: "tall",
-  },
-  /* single brand close — once, at the end */
-  { kind: "logo", id: "end", span: "wide" },
 ];
 
 export function BBLibrary() {
@@ -197,58 +143,34 @@ export function BBLibrary() {
         </Reveal>
 
         <div className="bb-mosaic" role="list">
-          {TILES.map((tile, i) => {
-            if (tile.kind === "logo") {
-              return (
-                <div
-                  key={tile.id}
-                  role="listitem"
-                  className="bb-mosaic__cell bb-mosaic__cell--logo bb-mosaic__cell--end"
-                  style={{ animationDelay: `${i * 24}ms` }}
-                  aria-hidden
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/bb-logo-full-v3.png"
-                    alt=""
-                    className="bb-mosaic__logo"
-                  />
-                </div>
-              );
-            }
-
-            return (
-              <button
-                key={`${tile.src}-${tile.label}-${i}`}
-                type="button"
-                role="listitem"
-                className={`bb-mosaic__cell bb-mosaic__cell--${tile.span}${
-                  tile.kind === "video" ? " is-video" : ""
-                }`}
-                style={{ animationDelay: `${i * 24}ms` }}
-                aria-label={`Open ${tile.label}`}
-                onClick={() =>
-                  setLightbox({ kind: tile.kind, src: tile.src })
-                }
-              >
-                {tile.kind === "video" ? (
-                  <video
-                    src={tile.src}
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    preload="metadata"
-                  />
-                ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={tile.src} alt="" />
-                )}
-                <span className="bb-mosaic__shade" aria-hidden />
-                <span className="bb-mosaic__cap">{tile.label}</span>
-              </button>
-            );
-          })}
+          {TILES.map((tile, i) => (
+            <button
+              key={tile.src}
+              type="button"
+              role="listitem"
+              className={`bb-mosaic__cell bb-mosaic__cell--${tile.span}${
+                tile.kind === "video" ? " is-video" : ""
+              }${tile.fit === "contain" ? " is-contain" : ""}`}
+              style={{ animationDelay: `${i * 24}ms` }}
+              aria-label="Open photo"
+              onClick={() => setLightbox({ kind: tile.kind, src: tile.src })}
+            >
+              {tile.kind === "video" ? (
+                <video
+                  src={tile.src}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={tile.src} alt="" />
+              )}
+              <span className="bb-mosaic__shade" aria-hidden />
+            </button>
+          ))}
         </div>
       </div>
 
