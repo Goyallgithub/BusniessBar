@@ -135,10 +135,6 @@ export function BBLibrary() {
                 Rooms we&apos;ve <span className="bb-serif">filled</span>
               </h1>
             </div>
-            <p className="bb-library__lede">
-              Still frames from the nights : portraits, reels, and the rooms
-              between conversations.
-            </p>
           </div>
         </Reveal>
 
